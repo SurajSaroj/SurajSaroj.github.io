@@ -76,23 +76,23 @@
             <p>This notes covers basic of how to run a IIS web server inside a container on Microsoft Azure cloud .
             <h2 class="section-heading">#1 Getting IIS Containers ready</h2>
 </br>
-            <p>Create a folder named "content",add an HTML file containing following code 
-</br>			
+            <p>Create a folder named "content",add an HTML file containing following code
+</br>
 			<html>
 			<header><title>IIS Running on Service Fabric</title></header>
 			<body>
 			IIS Running on Service Fabric
 			</body>
 			</html>
-		
-</br>			
+
+</br>
 			Save it as Index.html
-</br>			
+</br>
 			Next Step is to make a dockerfile in that same directory
+</br>
+			Create a file named Dockerfile without any extension and add the following lines
 </br>			
-			Create a file named Dockerfile without any extension and add the following lines 
-</br>			
-			#Start 
+			#Start
 			FROM microsoft/iis:nanoserver #Base Image
 			RUN mkdir C:\site #Creating a empty folder inside Docker Image
 			RUN powershell -NoProfile -Command \
@@ -101,14 +101,14 @@
 			ADD content/ /site  #Adding content folder to site folder
 			EXPOSE 80  #Exposing container port to host port
 			#End
-</br>			
-			Now run the following command in powershell and make sure the directory 
+</br>
+			Now run the following command in powershell and make sure the directory
 </br>
 			PS C:\Docker file> docker build -t iiscontainer .
 			<img class="img-fluid" src="images/servicefabric1/dockercommand.png" alt="">
-</br>         
-			
-			
+</br>
+
+
             <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
 
             <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
