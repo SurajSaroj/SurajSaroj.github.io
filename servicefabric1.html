@@ -75,22 +75,24 @@
             <p>Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers.</p>
             <p>This notes covers basic of how to run a IIS web server inside a container on Microsoft Azure cloud .
             <h2 class="section-heading">#1 Getting IIS Containers ready</h2>
-<\br>
+<br>
             <p>Create a folder named "content",add an HTML file containing following code
-<\br>
-			<html>
-			<header><title>IIS Running on Service Fabric</title></header>
-			<body>
-			IIS Running on Service Fabric
-			</body>
-			</html>
+<br>
 
+      <textarea rows=8 cols=50 readonly=true>
+<html>
+<header><title>IIS Running on Service Fabric</title></header>
+<body>
+IIS Running on Service Fabric
+</body>
+</html>
+</textarea><br>
 
 			Save it as Index.html<br>
 
  	    Next Step is to make a dockerfile in that same directory<br>
 
-			Create a file named Dockerfile without any extension and add the following lines<br>
+			Create a file named Dockerfile without any extension and add the following lines<br><br>
 
 			#Start<br>
 			FROM microsoft/iis:nanoserver #Base Image<br>
@@ -100,36 +102,18 @@
 			New-IISSite -Name "Site" -PhysicalPath C:\site -BindingInformation "*:80:"  <br>
 			ADD content/ /site  #Adding content folder to site folder  <br>
 			EXPOSE 80  #Exposing container port to host port <br>
-			#End   <br>
+			#End   <br> <br>
       Now run the following command in powershell and make sure the directory  <br>
 
 			PS C:\Docker file> docker build -t iiscontainer .   <br>
 			<img class="img-fluid" src="images/servicefabric1/dockercommand.png" alt="">  <br>
 
 
+            <blockquote class="blockquote"></blockquote>
 
-            <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
+            <h2 class="section-heading"></h2>
+          <span class="caption text-muted"></span>
 
-            <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
-
-            <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
-
-            <h2 class="section-heading">Reaching for the Stars</h2>
-
-            <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-
-            <a href="#">
-              <img class="img-fluid" src="img/post-sample-image.jpg" alt="">
-            </a>
-            <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-            <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-            <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-
-            <p>Placeholder text by
-              <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-              <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
           </div>
         </div>
       </div>
