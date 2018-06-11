@@ -95,24 +95,29 @@ IIS Running on Service Fabric
 			Create a file named Dockerfile without any extension and add the following lines<br><br>
 
 			#Start<br>
-			FROM microsoft/iis:nanoserver #Base Image<br>
-			RUN mkdir C:\site #Creating a empty folder inside Docker Image<br>
-			RUN powershell -NoProfile -Command \   <br>
-			Import-module IISAdministration; \ <br>
-			New-IISSite -Name "Site" -PhysicalPath C:\site -BindingInformation "*:80:"  <br>
-			ADD content/ /site  #Adding content folder to site folder  <br>
-			EXPOSE 80  #Exposing container port to host port <br>
-			#End   <br> <br>
-      Now run the following command in powershell and make sure the directory  <br>
+      FROM microsoft/iis:nanoserver #Base Image<br>
+      WORKDIR /inetpub/wwwroot
+      ADD content/ .  #Adding content folder to site folder  <br>
+      EXPOSE 80 #Exposing container port to host port <br><br>
 
-			PS C:\Docker file> docker build -t iiscontainer .   <br>
+      Now run the following command in powershell and make sure powershell points to the directory in which dockerfile resides. <br>
+
+			
 			<img class="img-fluid" src="images/servicefabric1/dockercommand.png" alt="">  <br>
 
+      If every thing is corrent then the output should look like this.
+      <img class="img-fluid" src="images/servicefabric1/dockerbuildcmd.PNG" alt="">  <br>
 
-            <blockquote class="blockquote"></blockquote>
 
-            <h2 class="section-heading"></h2>
-          <span class="caption text-muted"></span>
+      IF you want to see your docker image in action run the following command <br>
+      <img class="img-fluid" src="images/servicefabric1/dockerrunimg.PNG" alt="">  <br><br>
+      Now navigate to Localhost:8081 in browser.<br><br>
+      <img class="img-fluid" src="images/servicefabric1/browser.PNG" alt="">  <br><br>
+
+      <blockquote class="blockquote"></blockquote>
+
+      <h2 class="section-heading"></h2>
+      <span class="caption text-muted"></span>
 
           </div>
         </div>
