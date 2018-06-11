@@ -51,7 +51,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+    <header class="masthead" style="background-image: url('images/servicefabric1/mainimg.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -102,7 +102,6 @@ IIS Running on Service Fabric
 
       Now run the following command in powershell and make sure powershell points to the directory in which dockerfile resides. <br>
 
-			
 			<img class="img-fluid" src="images/servicefabric1/dockercommand.png" alt="">  <br>
 
       If every thing is corrent then the output should look like this.
@@ -114,6 +113,32 @@ IIS Running on Service Fabric
       Now navigate to Localhost:8081 in browser.<br><br>
       <img class="img-fluid" src="images/servicefabric1/browser.PNG" alt="">  <br><br>
 
+      <h2 class="section-heading">#2 Creating ServiceFabric Cluster on Azure</h2>
+      Log in to your azure account and follow the steps <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfnew.jpg" alt="">
+      <center><blockquote class="blockquote">Click on service fabric cluster</blockquote>  </center>
+       <br><br>
+
+    <img class="img-fluid" src="images/servicefabric1/sfdetail1.jpg" alt="">
+  <center><blockquote class="blockquote">Fill in all the details as per your needs</blockquote>  </center>
+     <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfdetail2.jpg" alt="">
+      <center><blockquote class="blockquote">Select VM Size,Node size</blockquote>  </center>
+       <br><br>
+
+        <img class="img-fluid" src="images/servicefabric1/sfdetail3.jpg" alt="">
+        <center><blockquote class="blockquote">Create a keyvault to connect to SF VM's</blockquote>  </center>
+             <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfdetail4.jpg" alt="">
+      <center><blockquote class="blockquote">Click Create to start provisioning your Service Fabric Cluster </blockquote>  </center>
+      <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfdetail5.jpg" alt="">
+    <center><blockquote class="blockquote">After few minutes you should see some thing like this.</blockquote>  </center>
+      <br><br>
       <blockquote class="blockquote"></blockquote>
 
       <h2 class="section-heading"></h2>
@@ -132,14 +157,7 @@ IIS Running on Service Fabric
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
+
               <li class="list-inline-item">
                 <a href="#">
                   <span class="fa-stack fa-lg">
