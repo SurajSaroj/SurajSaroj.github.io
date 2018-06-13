@@ -93,6 +93,15 @@
 
                     <img class="img-fluid" src="images/logicapps1/logicapps2.JPG" alt="">
                     <center><blockquote class="blockquote">Add a HTTP REQ-RES with authentication set to Azure AD </blockquote>  </center>
+                    <br />
+                    "authentication": <br />
+                    {<br />
+                    "audience": "https://management.azure.com",<br />
+                    "clientId": "Service principle ID",<br />
+                    "secret": "Service principle secret",<br />
+                    "tenant": "Azure AD Tenant ID",<br />
+                    "type": "ActiveDirectoryOAuth"<br />
+                    },<br />
                     <br><br>
 
                     <img class="img-fluid" src="images/logicapps1/logicapps3.JPG" alt="">
@@ -103,6 +112,131 @@
                     <center><blockquote class="blockquote">Select the appropriate value that you want to validate. </blockquote>  </center>
                     <br><br>
 
+
+                    <img class="img-fluid" src="images/logicapps1/logicapps5.JPG" alt="">
+                    <center><blockquote class="blockquote">Final workflow should look like this.</blockquote>  </center>
+                    <br><br>
+
+                    <img class="img-fluid" src="images/logicapps1/logicapps6.JPG" alt="">
+                    <center><blockquote class="blockquote"> </blockquote>  </center>
+                    <br><br>
+                    JSON file for entire workflow
+                        <textarea rows="50" cols="75">
+                    {
+                    "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "actions": {
+                    "HTTP": {
+                    "inputs": {
+                    "authentication": {
+                    "audience": "https://management.azure.com",
+                    "clientId": "",
+                    "secret": "",
+                    "tenant": "",
+                    "type": "ActiveDirectoryOAuth"
+                    },
+                    "method": "GET",
+                    "uri": "https://management.azure.com/subscriptions/8274b2ad-e173-4fdd-9e15-f59d3261a3e6/resourceGroups/DB-RG/providers/Microsoft.Sql/servers/logicappsdb/databases/logicappsdb/replicationLinks/6f97c127-252c-4410-91f5-5101d5e2bb48?api-version=2014-04-01"
+                    },
+                    "runAfter": {},
+                    "type": "Http"
+                    },
+                    "Initialize_variable": {
+                    "inputs": {
+                    "variables": [
+                    {
+                    "name": "array",
+                    "type": "String",
+                    "value": "@body('Parse_JSON')?['properties']?['replicationState']"
+                    }
+                    ]
+                    },
+                    "runAfter": {
+                    "Parse_JSON": [
+                    "Succeeded"
+                    ]
+                    },
+                    "type": "InitializeVariable"
+                    },
+                    "Parse_JSON": {
+                    "inputs": {
+                    "content": "@body('HTTP')",
+                    "schema": {
+                    "properties": {
+                    "id": {
+                    "type": "string"
+                    },
+                    "location": {
+                    "type": "string"
+                    },
+                    "name": {
+                    "type": "string"
+                    },
+                    "properties": {
+                    "properties": {
+                    "isTerminationAllowed": {
+                    "type": "boolean"
+                    },
+                    "partnerDatabase": {
+                    "type": "string"
+                    },
+                    "partnerLocation": {
+                    "type": "string"
+                    },
+                    "partnerRole": {
+                    "type": "string"
+                    },
+                    "partnerServer": {
+                    "type": "string"
+                    },
+                    "percentComplete": {
+                    "type": "integer"
+                    },
+                    "replicationMode": {
+                    "type": "string"
+                    },
+                    "replicationState": {
+                    "type": "string"
+                    },
+                    "role": {
+                    "type": "string"
+                    },
+                    "startTime": {
+                    "type": "string"
+                    }
+                    },
+                    "type": "object"
+                    },
+                    "type": {
+                    "type": "string"
+                    }
+                    },
+                    "type": "object"
+                    }
+                    },
+                    "runAfter": {
+                    "HTTP": [
+                    "Succeeded"
+                    ]
+                    },
+                    "type": "ParseJson"
+                    }
+                    },
+                    "contentVersion": "1.0.0.0",
+                    "outputs": {},
+                    "parameters": {},
+                    "triggers": {
+                    "Recurrence": {
+                    "recurrence": {
+                    "frequency": "Day",
+                    "interval": 3
+                    },
+                    "type": "Recurrence"
+                    }
+                    }
+                    }
+                    }
+                    </textarea>
                 </div>
             </div>
         </div>
