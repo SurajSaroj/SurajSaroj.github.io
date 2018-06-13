@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tech Notes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Tech notes</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('images/servicefabric1/mainimg.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1>Calling Azure REST API with Logic apps</h1>
+                        <span class="meta">
+                            Posted by
+                            <a href="#">Suraj</a>
+                            on June 3  , 2018
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <p>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tech Notes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Tech notes</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('images/servicefabric1/mainimg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Running a simple IIS web server inside a container on Azure Service Fabric</h1>
+                <span class="meta">Posted by
+                <a href="#">Suraj</a>
+                on March 29 , 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p>Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers.</p>
+            <p>This notes covers basic of how to run a IIS web server inside a container on Microsoft Azure cloud .
+            <h2 class="section-heading">#1 Getting IIS Containers ready</h2>
+<br>
+            <p>Create a folder named "content",add an HTML file containing following code
+<br>
+
+     <br>
+
+			Save it as Index.html<br>
+
+ 	    Next Step is to make a dockerfile in that same directory<br>
+
+			Create a file named Dockerfile without any extension and add the following lines<br><br>
+
+			#Start<br>
+      FROM microsoft/iis:nanoserver #Base Image<br>
+      WORKDIR /inetpub/wwwroot
+      ADD content/ .  #Adding content folder to site folder  <br>
+      EXPOSE 80 #Exposing container port to host port <br><br>
+
+      Now run the following command in powershell and make sure powershell points to the directory in which dockerfile resides. <br>
+
+			<img class="img-fluid" src="images/servicefabric1/dockercommand.png" alt="">  <br>
+
+      If every thing is corrent then the output should look like this.
+      <img class="img-fluid" src="images/servicefabric1/dockerbuildcmd.PNG" alt="">  <br>
+
+
+      IF you want to see your docker image in action run the following command <br>
+      <img class="img-fluid" src="images/servicefabric1/dockerrunimg.PNG" alt="">  <br><br>
+      Now navigate to Localhost:8081 in browser.<br><br>
+      <img class="img-fluid" src="images/servicefabric1/browser.PNG" alt="">  <br><br>
+
+      <h2 class="section-heading">#2 Creating ServiceFabric Cluster on Azure</h2>
+      Log in to your azure account and follow the steps <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfnew.JPG" alt="">
+      <center><blockquote class="blockquote">Click on service fabric cluster</blockquote>  </center>
+       <br><br>
+
+    <img class="img-fluid" src="images/servicefabric1/sfdetail1.JPG" alt="">
+  <center><blockquote class="blockquote">Fill in all the details as per your needs</blockquote>  </center>
+     <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfdetail2.JPG" alt="">
+      <center><blockquote class="blockquote">Select VM Size,Node size</blockquote>  </center>
+       <br><br>
+
+        <img class="img-fluid" src="images/servicefabric1/sfdetail3.JPG" alt="">
+        <center><blockquote class="blockquote">Create a keyvault to connect to SF VM's</blockquote>  </center>
+             <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfdetail4.JPG" alt="">
+      <center><blockquote class="blockquote">Click Create to start provisioning your Service Fabric Cluster </blockquote>  </center>
+      <br><br>
+
+      <img class="img-fluid" src="images/servicefabric1/sfdetail5.JPG" alt="">
+    <center><blockquote class="blockquote">After few minutes you should see some thing like this.</blockquote>  </center>
+      <br><br>
+
+      So you have your SF cluster up and running next step is to create a deployment package which will be used to deploy containers to SF Cluster.
+<br><br>
+<h2 class="section-heading">#3 Pushing image to Docker hub</h2><br>
+ <a href="https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html">Refer this link on how to do this step</a>
+
+<h2 class="section-heading">#4 Creating a deployment package using Visual Studio 2017</h2><br>
+Launch VS 2017 Click File->New->Project->Cloud->Service Fabric
+
+<img class="img-fluid" src="images/servicefabric1/vs1.JPG" alt="">
+<center><blockquote class="blockquote">Create new service fabric applicationi</blockquote>  </center>
+<br><br>
+
+<img class="img-fluid" src="images/servicefabric1/vs2.JPG" alt="">
+<center><blockquote class="blockquote">Enter Image Name, Container port and Host port</blockquote>  </center>
+ <br><br>
+Her is how my ApplicationManifest.xml looks like<br>
+
+
+
+  <img class="img-fluid" src="images/servicefabric1/vs3.JPG" alt="">
+  <center><blockquote class="blockquote">Click on Solution explorer and click on publish</blockquote></center>
+       <br>
+
+       <h2 class="section-heading">#5 Adding LoadBalancing rule</h2><br>
+   When the applicationi package is published all you havea lest to do is add LoadBalancing rule to the loadbalancer connected to SF Cluster<br>
+   Head back to azure portal select resource group then select loadbanancer then add loadbalancing rule to route incoming traffic to backend pool<br>
+
+<img class="img-fluid" src="images/servicefabric1/lb1.JPG" alt="">
+<center><blockquote class="blockquote">Final setting should look something like this</blockquote>  </center>
+<br>
+Now just hit the connection endpoint with the port defined by your application
+
+<img class="img-fluid" src="images/servicefabric1/finalpic.PNG" alt="">
+<center><blockquote class="blockquote">This is how you run containers inside ServiceFabric cluster </blockquote>  </center>
+<br><br>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
+</p>
+                    <p>
+                        This notes covers basic of how to run a IIS web server inside a container on Microsoft Azure cloud .
+                        <h2 class="section-heading">#1 Getting IIS Containers ready</h2>
+                        <br>
+                    <p>
+                        Create a folder named "content",add an HTML file containing following code
+                        <br>
+
+                        <textarea rows=8 cols=50 readonly=true>
+<html>
+<header><title>IIS Running on Service Fabric</title></header>
+<body>
+IIS Running on Service Fabric
+</body>
+</html>
+</textarea><br>
+
+                        Save it as Index.html<br>
+
+                        Next Step is to make a dockerfile in that same directory<br>
+
+                        Create a file named Dockerfile without any extension and add the following lines<br><br>
+
+                        #Start<br>
+                        FROM microsoft/iis:nanoserver #Base Image<br>
+                        WORKDIR /inetpub/wwwroot
+                        ADD content/ .  #Adding content folder to site folder  <br>
+                        EXPOSE 80 #Exposing container port to host port <br><br>
+
+                        Now run the following command in powershell and make sure powershell points to the directory in which dockerfile resides. <br>
+
+                        <img class="img-fluid" src="images/servicefabric1/dockercommand.png" alt="">  <br>
+
+                        If every thing is corrent then the output should look like this.
+                        <img class="img-fluid" src="images/servicefabric1/dockerbuildcmd.PNG" alt="">  <br>
+
+
+                        IF you want to see your docker image in action run the following command <br>
+                        <img class="img-fluid" src="images/servicefabric1/dockerrunimg.PNG" alt="">  <br><br>
+                        Now navigate to Localhost:8081 in browser.<br><br>
+                        <img class="img-fluid" src="images/servicefabric1/browser.PNG" alt="">  <br><br>
+
+                        <h2 class="section-heading">#2 Creating ServiceFabric Cluster on Azure</h2>
+                        Log in to your azure account and follow the steps <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/sfnew.JPG" alt="">
+                        <center><blockquote class="blockquote">Click on service fabric cluster</blockquote>  </center>
+                        <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/sfdetail1.JPG" alt="">
+                        <center><blockquote class="blockquote">Fill in all the details as per your needs</blockquote>  </center>
+                        <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/sfdetail2.JPG" alt="">
+                        <center><blockquote class="blockquote">Select VM Size,Node size</blockquote>  </center>
+                        <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/sfdetail3.JPG" alt="">
+                        <center><blockquote class="blockquote">Create a keyvault to connect to SF VM's</blockquote>  </center>
+                        <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/sfdetail4.JPG" alt="">
+                        <center><blockquote class="blockquote">Click Create to start provisioning your Service Fabric Cluster </blockquote>  </center>
+                        <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/sfdetail5.JPG" alt="">
+                        <center><blockquote class="blockquote">After few minutes you should see some thing like this.</blockquote>  </center>
+                        <br><br>
+
+                        So you have your SF cluster up and running next step is to create a deployment package which will be used to deploy containers to SF Cluster.
+                        <br><br>
+                        <h2 class="section-heading">#3 Pushing image to Docker hub</h2><br>
+                        <a href="https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html">Refer this link on how to do this step</a>
+
+                        <h2 class="section-heading">#4 Creating a deployment package using Visual Studio 2017</h2><br>
+                        Launch VS 2017 Click File->New->Project->Cloud->Service Fabric
+
+                        <img class="img-fluid" src="images/servicefabric1/vs1.JPG" alt="">
+                        <center><blockquote class="blockquote">Create new service fabric applicationi</blockquote>  </center>
+                        <br><br>
+
+                        <img class="img-fluid" src="images/servicefabric1/vs2.JPG" alt="">
+                        <center><blockquote class="blockquote">Enter Image Name, Container port and Host port</blockquote>  </center>
+                        <br><br>
+                        Her is how my ApplicationManifest.xml looks like<br>
+<textarea rows=30 cols=100>
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ApplicationManifest ApplicationTypeName="sfcluster4Type"
+                     ApplicationTypeVersion="1.0.0"
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <Parameters>
+                        <Parameter Name="iiscontainerservice_InstanceCount" DefaultValue="-1" />
+
+  </Parameters>
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
+       ServiceManifest.xml file. -->
+                        <ServiceManifestImport>
+                        <ServiceManifestRef ServiceManifestName="iiscontainerservicePkg" ServiceManifestVersion="1.0.0" />
+
+                        <ConfigOverrides />
+
+                        <Policies>
+                        <ContainerHostPolicies CodePackageRef="Code">
+        <!-- See https://aka.ms/I7z0p9 for how to encrypt your repository password -->
+                        <RepositoryCredentials AccountName="" Password="" PasswordEncrypted="true" />
+
+                        <PortBinding ContainerPort="80" EndpointRef="iiscontainerserviceTypeEndpoint" />
+
+      </ContainerHostPolicies>
+    </Policies>
+  </ServiceManifestImport>
+                        <DefaultServices>
+    <!-- The section below creates instances of service types, when an instance of this
+         application type is created. You can also create one or more instances of service type using the
+         ServiceFabric PowerShell module.
+
+         The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+                        <Service Name="iiscontainerservice" ServicePackageActivationMode="ExclusiveProcess">
+                        <StatelessService ServiceTypeName="iiscontainerserviceType" InstanceCount="[iiscontainerservice_InstanceCount]">
+                        <SingletonPartition />
+
+      </StatelessService>
+    </Service>
+  </DefaultServices>
+</ApplicationManifest>
+</textarea><br><br>
+
+
+                        <img class="img-fluid" src="images/servicefabric1/vs3.JPG" alt="">
+                        <center><blockquote class="blockquote">Click on Solution explorer and click on publish</blockquote></center>
+                        <br>
+
+                        <h2 class="section-heading">#5 Adding LoadBalancing rule</h2><br>
+                        When the applicationi package is published all you havea lest to do is add LoadBalancing rule to the loadbalancer connected to SF Cluster<br>
+                        Head back to azure portal select resource group then select loadbanancer then add loadbalancing rule to route incoming traffic to backend pool<br>
+
+                        <img class="img-fluid" src="images/servicefabric1/lb1.JPG" alt="">
+                        <center><blockquote class="blockquote">Final setting should look something like this</blockquote>  </center>
+                        <br>
+                        Now just hit the connection endpoint with the port defined by your application
+
+                        <img class="img-fluid" src="images/servicefabric1/finalpic.PNG" alt="">
+                        <center><blockquote class="blockquote">This is how you run containers inside ServiceFabric cluster </blockquote>  </center>
+                        <br><br>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <ul class="list-inline text-center">
+
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
