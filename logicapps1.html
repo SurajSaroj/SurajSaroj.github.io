@@ -145,29 +145,18 @@
 
     <!-- Post Content -->
     <article>
-      <div class="container">
+      <div class="container">          
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <p>Azure Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers.</p>
-            <p>This notes covers basic of how to run a IIS web server inside a container on Microsoft Azure cloud .
-            <h2 class="section-heading">#1 Getting IIS Containers ready</h2>
+                    <p>
+                        Azure Logic Apps simplifies how you build automated scalable workflows that integrate apps and data across cloud services and on-premises systems.
+                    </p>
+            <p>This notes covers basic of how to authenticate and call Azure REST API using Logic apps.
+            <h2 class="section-heading">#1 Creating Service Principle to Authenticate REST Call</h2>
 <br>
-            <p>Create a folder named "content",add an HTML file containing following code
-<br>
+        <p>Follow this <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal">link </a> to create Service Principle</p>
 
-     <br>
-
-			Save it as Index.html<br>
-
- 	    Next Step is to make a dockerfile in that same directory<br>
-
-			Create a file named Dockerfile without any extension and add the following lines<br><br>
-
-			#Start<br>
-      FROM microsoft/iis:nanoserver #Base Image<br>
-      WORKDIR /inetpub/wwwroot
-      ADD content/ .  #Adding content folder to site folder  <br>
-      EXPOSE 80 #Exposing container port to host port <br><br>
+ 	
 
       Now run the following command in powershell and make sure powershell points to the directory in which dockerfile resides. <br>
 
